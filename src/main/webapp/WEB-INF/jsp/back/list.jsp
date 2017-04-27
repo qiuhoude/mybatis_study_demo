@@ -1,5 +1,6 @@
 ﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%
     String path = request.getContextPath();
     String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + path;
@@ -40,10 +41,24 @@
                     <tr>
                         <th><input type="checkbox" id="all" onclick="#"/></th>
                         <th>序号</th>
-                        <th>演示字段1</th>
-                        <th>演示字段2</th>
+                        <th>指令名称</th>
+                        <th>描述</th>
                         <th>操作</th>
                     </tr>
+                    <c:forEach items="${messageList}" var="message" varStatus="status">
+                        <tr
+
+                        >
+                            <td><input type="checkbox"/></td>
+                            <td>${status.index+1}</td>
+                            <td>${message.command}</td>
+                            <td>${message.description}</td>
+                            <td>
+                                <a href="#">修改</a>&nbsp;&nbsp;&nbsp;
+                                <a href="#">删除</a>
+                            </td>
+                        </tr>
+                    </c:forEach>
                     <tr>
                         <td><input type="checkbox"/></td>
                         <td>1</td>
