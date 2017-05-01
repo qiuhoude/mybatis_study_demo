@@ -1,6 +1,8 @@
 ﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%--maven 构建时加这个jstl才起作用 , 尼玛坑B死人--%>
+<%@page isELIgnored="false"%>
 <%
     String path = request.getContextPath();
     String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + path;
@@ -13,7 +15,21 @@
     <link href="<%= basePath%>/resources/css/all.css" rel="stylesheet" type="text/css"/>
 </head>
 <body style="background: #e1e9eb;">
+
+<c:set var="salary" scope="request" value="${2000*2}"/>
+<c:out value="${salary}"/>
+<c:out value="${requestScope.messageList}"/>
+
 <div><span><%= basePath%></span></div>
+<div><%
+//    out.println("你的 IP 地址 " + request.getRemoteAddr());
+    // 重定向到新地址
+//    String site = "https://www.baidu.com";
+//    response.setStatus(response.SC_MOVED_TEMPORARILY);
+//    response.setStatus(response.SC_TEMPORARY_REDIRECT);
+//    response.setHeader("Location", site);
+%>
+</div>
 <form action="" id="mainForm" method="post">
     <div class="right">
         <div class="current">当前位置：<a href="javascript:void(0)" style="color:#6E6E6E;">内容管理</a> &gt; 内容列表</div>
@@ -47,7 +63,6 @@
                     </tr>
                     <c:forEach items="${messageList}" var="message" varStatus="status">
                         <tr
-
                         >
                             <td><input type="checkbox"/></td>
                             <td>${status.index+1}</td>
@@ -59,46 +74,6 @@
                             </td>
                         </tr>
                     </c:forEach>
-                    <tr>
-                        <td><input type="checkbox"/></td>
-                        <td>1</td>
-                        <td>演示值1</td>
-                        <td>演示值2</td>
-                        <td>
-                            <a href="#">修改</a>&nbsp;&nbsp;&nbsp;
-                            <a href="#">删除</a>
-                        </td>
-                    </tr>
-                    <tr style="background-color:#ECF6EE;">
-                        <td><input type="checkbox"/></td>
-                        <td>2</td>
-                        <td>演示值1</td>
-                        <td>演示值2</td>
-                        <td>
-                            <a href="#">修改</a>&nbsp;&nbsp;&nbsp;
-                            <a href="#">删除</a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td><input type="checkbox"/></td>
-                        <td>3</td>
-                        <td>演示值1</td>
-                        <td>演示值2</td>
-                        <td>
-                            <a href="#">修改</a>&nbsp;&nbsp;&nbsp;
-                            <a href="#">删除</a>
-                        </td>
-                    </tr>
-                    <tr style="background-color:#ECF6EE;">
-                        <td><input type="checkbox"/></td>
-                        <td>4</td>
-                        <td>演示值1</td>
-                        <td>演示值2</td>
-                        <td>
-                            <a href="#">修改</a>&nbsp;&nbsp;&nbsp;
-                            <a href="#">删除</a>
-                        </td>
-                    </tr>
                     </tbody>
                 </table>
                 <div class='page fix'>
