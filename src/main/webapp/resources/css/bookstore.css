@@ -1,0 +1,164 @@
+#clear {
+    clear: both;
+}
+
+#top {
+    overflow: hidden;
+}
+
+#top_left {
+    float: left;
+    margin-left: 10px;
+    width: 300px;
+}
+
+#top_right {
+    width: 400px;
+    float: right;
+    margin-top: 15px;
+    font-size: 14px;
+}
+
+#top_right a {
+    text-decoration: none;
+    color: #06f;
+}
+
+#top_right a:hover {
+    color: #909;
+}
+
+#top_right img {
+    margin-bottom: -5px;
+}
+
+#menu {
+    background-color: #1C3F09;
+    border-top: 5px solid #82B211;
+    padding: 5px 0;
+    text-align: center;
+}
+
+#menu a {
+    margin: 0 8px;
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 15px;
+}
+
+#menu .all {
+    color: yellow;
+}
+
+#menu a:hover {
+    color: #999;
+}
+
+#search {
+    background-color: #B6B684;
+    padding: 7px 0;
+    text-align: right;
+}
+
+#search input[type='image'] {
+    margin-bottom: -5px;
+    margin-right: 250px;
+}
+
+#search input[type='text'] {
+    height : 16px;
+    border: 1px solid #999;
+}
+
+#content {
+    width: 900px;
+    /*auto 表示div左右居中,8表示上 */
+    margin: 8px auto 15px;
+}
+
+#content_top {
+    margin-top: 10px;
+    text-align: right;
+    font-size: 14px;
+}
+
+#content_bottom h1 {
+    font-size: 15px;
+    display: inline;
+}
+
+#productlist_img img {
+    width: 100%;
+}
+
+#content_bottom {
+    border: 2px solid #999;
+    background-color: #FCFDEF;
+    padding: 10px 15px;
+}
+
+#content_bottom span {
+    font-size: 10px;
+}
+
+#booklist .book {
+    float: left;
+    /*相对父元素的百分之25*/
+    width: 25%;
+    text-align: center;
+    padding-top: 10px;
+}
+
+.bookimg img {
+    width: 130px;
+    height: 196px;
+}
+
+#booklist span {
+    font-size: 13px;
+    line-height: 15px;
+    display: block;
+}
+
+#pageIndex {
+    margin: 10px 2px;
+    text-align: center;
+}
+
+#pageIndex a {
+    border: 1px solid #9AAFE5;
+    text-decoration: none;
+    padding: 2px 6px;
+    color: #9AAFE5
+}
+
+#pageIndex a:hover {
+    color: #2B66A5;
+    border: 1px solid #2B66A5;
+}
+
+#pageIndex a[class=current] {
+    background-color: blue;
+}
+
+
+/*====================*/
+
+#bottom {
+    background-color: #EFEEDC;
+    overflow: hidden;
+    padding: 10px 0;
+}
+
+#bottom_left {
+    float: left;
+    margin-left: 200px;
+    width: 300px;
+}
+
+#bottom_right {
+    width: 400px;
+    float: left;
+    line-height: 1.5;
+}
