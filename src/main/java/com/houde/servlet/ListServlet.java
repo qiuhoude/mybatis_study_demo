@@ -1,17 +1,13 @@
 package com.houde.servlet;
 
 import com.houde.bean.Message;
-import com.houde.dao.MessageDao;
+import com.houde.service.QueryService;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.GregorianCalendar;
 import java.util.List;
 
 /**
@@ -22,19 +18,20 @@ public class ListServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         req.setCharacterEncoding("UTF-8");
+        // 接受页面的值
+        String command = req.getParameter("command");
+        String description = req.getParameter("description");
+
+        QueryService listService = new QueryService();
+        List<Message> msgList = listService.queryMessageList(command, description);
+        if (msgList != null)
+            req.setAttribute("messageList", msgList);
+        // 向页面传值
+        req.setAttribute("command", command);
+        req.setAttribute("description", description);
+        // 向页面跳转
         req.getRequestDispatcher("/WEB-INF/jsp/back/list.jsp").forward(req, resp);
 
-        req.setCharacterEncoding("utf-8");
-        List<Message> msgList =new ArrayList<>();
-        msgList.add(new Message(1,"hehe","去你额","嘻嘻"));
-        req.setAttribute("messageList", msgList);
-//        MessageDao dao = new MessageDao();
-//        try {
-//            List<Message> msgList = dao.queryMsgList();
-//            req.setAttribute("messageList", msgList);
-//        } catch (SQLException e) {
-//            e.printStackTrace();
-//        }
         // 设置每隔5秒自动刷新
 //        resp.setIntHeader("Refresh", 5);
 //        // 获取当前时间

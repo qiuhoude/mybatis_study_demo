@@ -7,13 +7,14 @@
 
     <properties resource="mysql.properties">
         <property name="driver" value="com.mysql.jdbc.Driver"/>
-        <property name="url" value="jdbc:mysql://localhost:3306/micro_message"/>
+        <property name="url"
+                  value="jdbc:mysql://localhost:3306/micro_message?useUnicode=true&amp;characterEncoding=utf-8"/>
         <property name="username" value="root"/>
         <property name="password" value="root"/>
     </properties>
 
     <settings>
-    <setting name="logImpl" value="NO_LOGGING"/>
+        <setting name="logImpl" value="LOG4J"/>
     </settings>
 
     <environments default="development">
@@ -31,5 +32,7 @@
 
     <mappers>
         <mapper resource="com/houde/config/sqlxml/Message.xml"/>
+        <mapper resource="com/houde/config/sqlxml/Command.xml"/>
+        <mapper resource="com/houde/config/sqlxml/CommandContent.xml"/>
     </mappers>
 </configuration>

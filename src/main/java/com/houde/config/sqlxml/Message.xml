@@ -29,17 +29,45 @@
         <result column="CONTENT" jdbcType="VARCHAR" property="content"/>
     </resultMap>
 
-    <select id="list" parameterType="long" resultMap="MessageResult">
-    SELECT * FROM message WHERE 1=1
-  </select>
+    <select id="queryMessageList" parameterType="com.houde.bean.Message" resultMap="MessageResult">
+        SELECT <include refid="columns"/> FROM message
+        <where>
+            <if test="command != null and !&quot;&quot;.equals(command.trim())">
+                AND COMMAND=#{command}
+            </if>
+            <if test="description != null and !&quot;&quot;.equals(description.trim())">
+                AND DESCRIPTION LIKE '%' #{description} '%'
+            </if>
+        </where>
+    </select>
+
+    <sql id="columns">ID,COMMAND,DESCRIPTION,CONTENT</sql>
+
+
+
+    <delete id="deleteOne" parameterType="int">
+        delete from MESSAGE where ID = #{_parameter}
+    </delete>
+
+    <delete id="deleteBatch" parameterType="java.util.List">
+        delete from MESSAGE where ID in(
+        <foreach collection="list" item="item" separator=",">
+            #{item}
+        </foreach>
+        )
+    </delete>
+
+    <!--<delete id="deleteOne" parameterType="int">-->
+        <!--delete from message where ID = #{id:}-->
+    <!--</delete>-->
 
     <!--<select id="version" parameterType="long" resultType="int">-->
     <!--SELECT version FROM user WHERE id = #{id,jdbcType=INTEGER}-->
-  <!--</select>-->
+    <!--</select>-->
 
     <!--<delete id="delete" parameterType="UserAlias">-->
     <!--DELETE FROM user WHERE id = #{id:INTEGER}-->
-  <!--</delete>-->
+    <!--</delete>-->
 
 
     <!--<insert id="insert" parameterType="UserAlias" useGeneratedKeys="false">-->
@@ -55,7 +83,7 @@
     <!--#{password.encrypted:VARCHAR},-->
     <!--#{administrator,jdbcType=BOOLEAN}-->
     <!--)-->
-  <!--</insert>-->
+    <!--</insert>-->
 
     <!--<update id="update" parameterType="UserAlias">-->
     <!--UPDATE user SET-->
@@ -64,15 +92,15 @@
     <!--administrator = #{administrator,jdbcType=BOOLEAN}-->
     <!--WHERE-->
     <!--id = #{id,jdbcType=INTEGER}-->
-  <!--</update>-->
+    <!--</update>-->
 
     <!--&lt;!&ndash;   Unique constraint check &ndash;&gt;-->
     <!--<select id="isUniqueUsername" parameterType="map" resultType="boolean">-->
-        <!--SELECT (count(*) = 0)-->
-        <!--FROM user-->
-        <!--WHERE ((#{userId,jdbcType=BIGINT} IS NOT NULL AND id != #{userId,jdbcType=BIGINT}) OR #{userId,jdbcType=BIGINT}-->
-        <!--IS-->
-        <!--NULL)  &lt;!&ndash; other than me &ndash;&gt;-->
-        <!--AND (username = #{username,jdbcType=VARCHAR})-->
+    <!--SELECT (count(*) = 0)-->
+    <!--FROM user-->
+    <!--WHERE ((#{userId,jdbcType=BIGINT} IS NOT NULL AND id != #{userId,jdbcType=BIGINT}) OR #{userId,jdbcType=BIGINT}-->
+    <!--IS-->
+    <!--NULL)  &lt;!&ndash; other than me &ndash;&gt;-->
+    <!--AND (username = #{username,jdbcType=VARCHAR})-->
     <!--</select>-->
 </mapper>

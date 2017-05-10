@@ -2,7 +2,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--maven 构建时加这个jstl才起作用 , 尼玛坑B死人--%>
-<%@page isELIgnored="false"%>
+<%--<%@page isELIgnored="false" %>--%>
 <%
     String path = request.getContextPath();
     String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + path;
@@ -22,7 +22,7 @@
 
 <div><span><%= basePath%></span></div>
 <div><%
-//    out.println("你的 IP 地址 " + request.getRemoteAddr());
+    //    out.println("你的 IP 地址 " + request.getRemoteAddr());
     // 重定向到新地址
 //    String site = "https://www.baidu.com";
 //    response.setStatus(response.SC_MOVED_TEMPORARILY);
@@ -30,20 +30,22 @@
 //    response.setHeader("Location", site);
 %>
 </div>
-<form action="" id="mainForm" method="post">
+<form action="<%= basePath %>List.action" id="mainForm" method="post">
+
+    <input type="hidden" name="currentPage" id="currentPage" value="${page.currentPage}"/>
     <div class="right">
         <div class="current">当前位置：<a href="javascript:void(0)" style="color:#6E6E6E;">内容管理</a> &gt; 内容列表</div>
         <div class="rightCont">
-            <p class="g_title fix">内容列表 <a class="btn03" href="#">新 增</a>&nbsp;&nbsp;&nbsp;&nbsp;<a class="btn03"
-                                                                                                    href="#">删 除</a></p>
+            <p class="g_title fix">内容列表 <a class="btn03" href="#">新 增</a>&nbsp;&nbsp;&nbsp;&nbsp;
+                <a class="btn03" href="#">删 除</a></p>
             <table class="tab1">
                 <tbody>
                 <tr>
-                    <td width="90" align="right">演示字段1：</td>
+                    <td width="90" align="right">指令名称：</td>
                     <td>
                         <input type="text" class="allInput" value=""/>
                     </td>
-                    <td width="90" align="right">演示字段2：</td>
+                    <td width="90" align="right">描述：</td>
                     <td>
                         <input type="text" class="allInput" value=""/>
                     </td>
@@ -63,14 +65,15 @@
                     </tr>
                     <c:forEach items="${messageList}" var="message" varStatus="status">
                         <tr
-                        >
-                            <td><input type="checkbox"/></td>
+                                <c:if test="${status.index % 2 != 0}">style='background-color:#ECF6EE;'</c:if> >
+
+                            <td><input type="checkbox" name="id" value="${message.id}"/></td>
                             <td>${status.index+1}</td>
                             <td>${message.command}</td>
                             <td>${message.description}</td>
                             <td>
                                 <a href="#">修改</a>&nbsp;&nbsp;&nbsp;
-                                <a href="#">删除</a>
+                                <a href="${basePath}DeleteOneServlet.action?id=${message.id}">删除</a>
                             </td>
                         </tr>
                     </c:forEach>

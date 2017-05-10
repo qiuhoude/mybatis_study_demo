@@ -55,7 +55,7 @@ strong {
 body {
     font: 12px/18px Arial, Helvetica, sans-serif, "宋体";
     color: #6e6e6e;
-    background: #1b5799 url(../images/bodybg.png) repeat-x;
+    /*background: #1b5799 url(../images/bodybg.png) repeat-x;*/
 }
 
 a {
@@ -121,7 +121,7 @@ input, select, teatarea {
     width: 2px;
     height: 18px;
     margin: 0 10px;
-    background: url(../images/line.gif) no-repeat;
+    /*background: url(../images/line.gif) no-repeat;*/
 }
 
 .iheader {
@@ -192,13 +192,13 @@ input, select, teatarea {
 }
 
 .nav li a:hover, .nav li.on a {
-    background: url(../images/navbg.png) no-repeat left top;
+    /*background: url(../images/navbg.png) no-repeat left top;*/
     color: #2777ad;
     text-decoration: none;
 }
 
 .nav li a:hover span, .nav li.on a span {
-    background: url(../images/navbg.png) no-repeat right top;
+    /*background: url(../images/navbg.png) no-repeat right top;*/
 }
 
 .selectBox {
@@ -221,7 +221,7 @@ input, select, teatarea {
     width: 874px;
     height: 317px;
     padding-top: 193px;
-    background: url(../images/login.jpg) no-repeat;
+    /*background: url(../images/login.jpg) no-repeat;*/
     margin: 0 auto 70px;
 }
 
@@ -351,7 +351,7 @@ input, select, teatarea {
 }
 
 .leftTd {
-    background: url(../images/tdbg.png) repeat-y 0 0;
+    /*background: url(../images/tdbg.png) repeat-y 0 0;*/
 }
 
 .left li a {
@@ -366,7 +366,7 @@ input, select, teatarea {
 }
 
 .left li a:hover, .left li.on a, .left h3 a:hover, .left h3 a.on {
-    background: url(../images/liabg.gif) no-repeat;
+    /*background: url(../images/liabg.gif) no-repeat;*/
     color: #fff;
     text-decoration: none;
 }
@@ -388,11 +388,11 @@ input, select, teatarea {
     width: 7px;
     height: 100px;
     cursor: pointer;
-    background: url(../images/pointer.gif) no-repeat;
+    /*background: url(../images/pointer.gif) no-repeat;*/
 }
 
 .pointer2 {
-    background: url(../images/pointer2.gif) no-repeat;
+    /*background: url(../images/pointer2.gif) no-repeat;*/
 }
 
 /*right*/
@@ -462,7 +462,7 @@ input, select, teatarea {
 }
 
 .rightCont .title a:hover, .rightCont .title .on a {
-    background: url(../images/titlebg1.png) no-repeat;
+    /*background: url(../images/titlebg1.png) no-repeat;*/
     text-decoration: none;
     color: #fff;
     font-weight: 700;
@@ -473,7 +473,7 @@ input, select, teatarea {
     width: 9px;
     height: 5px;
     bottom: -17px;
-    _bottom: -27px;
+    /*bottom: -27px;*/
     right: 66px;
 }
 
@@ -1080,7 +1080,7 @@ input, select, teatarea {
     width: 10px;
     height: 10px;
     margin-top: 10px;
-    background: url(../images/x.gif) no-repeat;
+    /*background: url(../images/x.gif) no-repeat;*/
 }
 
 .forgestPassword .tip {
@@ -1088,7 +1088,7 @@ input, select, teatarea {
     line-height: 26px;
     margin-bottom: 30px;
     padding-left: 25px;
-    background: #edf4fc url(../images/tip.gif) no-repeat 5px 3px;
+    /*background: #edf4fc url(../images/tip.gif) no-repeat 5px 3px;*/
     color: #969696;
     border: 1px solid #b6dff5
 }
@@ -1097,7 +1097,7 @@ input, select, teatarea {
     position: absolute;
     width: 7px;
     height: 7px;
-    background: url(../images/round.gif) no-repeat;
+    /*background: url(../images/round.gif) no-repeat;*/
 }
 
 .forgestPassword .c1 {

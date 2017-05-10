@@ -17,12 +17,19 @@ import java.util.List;
  */
 public class MessageDao {
 
-    public List<Message> queryMsgListMybatis() {
+    /**
+     * 根据查询条件查询消息列表
+     */
+    public List<Message> queryMsgListMybatis(String command, String description) {
         List<Message> msgList = new ArrayList<Message>();
         SqlSession session = null;
         try {
+            Message message = new Message();
+            message.setCommand(command);
+            message.setDescription(description);
             session = DBAccess.getSqlSessionFactory().openSession();
-            msgList = session.selectList("Message.list");
+            // 通过sqlSession执行SQL语句
+            msgList = session.selectList("Message.queryMessageList");
         } catch (IOException e) {
             e.printStackTrace();
         } finally {
@@ -33,9 +40,50 @@ public class MessageDao {
         return msgList;
     }
 
+    /**
+     * 单条删除
+     */
+    public void deleteOne(int id) {
+
+        SqlSession sqlSession = null;
+        try {
+            sqlSession = DBAccess.getSqlSessionFactory().openSession();
+            // 通过sqlSession执行SQL语句
+            sqlSession.delete("Message.deleteOne", id);
+            //因为需要
+            sqlSession.commit();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            if (sqlSession != null) {
+                sqlSession.close();
+            }
+        }
+    }
+
+    /**
+     * 批量删除
+     */
+    public void deleteBatch(List<Integer> ids) {
+        SqlSession sqlSession = null;
+        try {
+            sqlSession = DBAccess.getSqlSessionFactory().openSession();
+            // 通过sqlSession执行SQL语句
+            sqlSession.delete("Message.deleteBatch", ids);
+            sqlSession.commit();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            if (sqlSession != null) {
+                sqlSession.close();
+            }
+        }
+    }
+
+
     public static void main(String[] args) {
         MessageDao dao = new MessageDao();
-        List<Message> li = dao.queryMsgListMybatis();
+        List<Message> li = dao.queryMsgListMybatis("", "");
         System.out.println(li);
     }
 
